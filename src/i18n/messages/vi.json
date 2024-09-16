@@ -1,9 +1,27 @@
 {
+    "Common": {},
     "Title": {
         "page": "Trang"
     },
     "Button": {
-        "login": "Dang nhap"
+        "login": "Đăng nhập",
+        "register": "Đăng ký"
+    },
+    "Form": {
+        "login": "Đăng nhập",
+        "register": "Đăng ký"
+    },
+    "Text": {
+        "dontHaveAccount": "Bạn chưa có tài khoản?"
+    },
+    "Input": {
+        "email": "Email",
+        "password": "Mật khẩu",
+        "confirmPassword": "Xác nhận mật khẩu"
+    },
+    "Nav": {
+        "home": "Trang chủ",
+        "about": "Giới thiệu",
+        "contact": "Liên hệ"
     }
 }
-

@@ -1,29 +1,36 @@
 "use client";
-import AuthGuard from "@/components/Guards/AuthGuard";
-import { SessionProvider } from "next-auth/react";
-import { Suspense } from "react";
-import { Footer } from "../components/Layouts/Footer";
-import { Nav } from "../components/Layouts/Nav";
 import LoadingPage from "@/app/loading";
+import AuthGuard from "@/components/Guards/AuthGuard";
+import { ROUTE_AUTH } from "@/enums/router";
+import { SessionProvider } from "next-auth/react";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
-export const SubLayout = ({ children }: { children: React.ReactNode }) => {
+const AuthLayout = dynamic(() => import("./AuthLayout"), {
+    loading: () => <LoadingPage />,
+});
+const MainLayout = dynamic(() => import("./MainLayout"), {
+    loading: () => <LoadingPage />,
+});
+
+export function SubLayout({ children }: { children: React.ReactNode }) {
+    const { pathname } = (window && window.location) || "";
+
+    const withoutNavRoute = pathname.includes(ROUTE_AUTH.DEFAULT);
+
+    console.log({ pathname });
+
     return (
         <Suspense fallback={<LoadingPage />}>
             <SessionProvider>
-                <AuthGuard>
-                    <MainLayout>{children}</MainLayout>
-                </AuthGuard>
+                {withoutNavRoute ? (
+                    <AuthLayout>{children}</AuthLayout>
+                ) : (
+                    <AuthGuard>
+                        <MainLayout>{children}</MainLayout>
+                    </AuthGuard>
+                )}
             </SessionProvider>
         </Suspense>
     );
-};
-
-export const MainLayout = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <div className="flex flex-col justify-between">
-            <Nav />
-            {children}
-            <Footer />
-        </div>
-    );
-};
+}

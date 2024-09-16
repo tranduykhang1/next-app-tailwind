@@ -1,4 +1,5 @@
 "use client";
+
 import CustomButton from "@/components/Buttons/CusdtomButton";
 import { CustomFormInput } from "@/components/Inputs/CustomFormInput";
 import { ROUTE_AUTH } from "@/enums/router";
@@ -6,7 +7,7 @@ import { useAppTranslations } from "@/hooks/shared/useAppTranslations";
 import { useLoginViewModel } from "@/hooks/view-models/auth/useLoginViewModel";
 import { Link } from "@/i18n/routing";
 
-export default function LoginPage() {
+export default function RegisterPage() {
     const { tForm, tInput, tButton, tText } = useAppTranslations();
 
     const { register, formErrors, handleSubmit, onLogin } = useLoginViewModel();
@@ -17,7 +18,7 @@ export default function LoginPage() {
                     <img src="/favicon.svg" width="50" alt="Logo" />
                 </div> */}
                 <h1 className="text-3xl font-bold text-form-dark dark:text-form my-auto">
-                    {tForm("login")}
+                    {tForm("register")}
                 </h1>
             </div>
             <div className="text-sm font-light text-[#6B7280] pb-8 mx-auto"></div>
@@ -43,14 +44,25 @@ export default function LoginPage() {
                     autoComplete="current-password"
                     error={formErrors["password"]}
                 />
-                <CustomButton type="submit">{tButton("login")}</CustomButton>
+
+                <CustomFormInput
+                    register={register("password")}
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="••••••••••"
+                    label={tInput("confirmPassword")}
+                    autoComplete="current-password"
+                    error={formErrors["password"]}
+                />
+                <CustomButton type="submit">{tButton("register")}</CustomButton>
                 <div className="text-sm font-light text-[#6B7280] text-center">
                     {tText("dontHaveAccount")}
                     <Link
-                        href={ROUTE_AUTH.REGISTER}
+                        href={ROUTE_AUTH.LOGIN}
                         className="font-medium text-white dark:text-primary ml-2"
                     >
-                        {tButton("register")}
+                        {tButton("login")}
                     </Link>
                 </div>
             </form>

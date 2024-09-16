@@ -9,7 +9,6 @@ const config: Config = {
     ],
     theme: {
         container: {
-            center: true,
             padding: "2rem",
             screens: {
                 "2xl": "1400px",
@@ -29,9 +28,17 @@ const config: Config = {
                     dark: "#f4f6fb",
                     DEFAULT: "#1b2436",
                 },
+                text: {
+                    DEFAULT: "#1b2436",
+                    dark: "#f4f6fb",
+                },
                 buttonText: {
                     DEFAULT: "#f4f6fb",
                     dark: "#1b2436",
+                },
+                form: {
+                    dark: "#f4f6fb",
+                    DEFAULT: "#1b2436",
                 },
                 error: {
                     DEFAULT: "#304b74",
@@ -49,20 +56,53 @@ const config: Config = {
                     DEFAULT: "#1b2436",
                     dark: "#f4f6fb",
                 },
+                muted: {
+                    DEFAULT: "hsl(var(--muted))",
+                    foreground: "hsl(var(--muted-foreground))",
+                },
+                accent: {
+                    DEFAULT: "hsl(var(--accent))",
+                    foreground: "hsl(var(--accent-foreground))",
+                },
+                destructive: {
+                    DEFAULT: "hsl(var(--destructive))",
+                    foreground: "hsl(var(--destructive-foreground))",
+                },
+                border: {
+                    DEFAULT: "#1b2436",
+                    dark: "#f4f6fb",
+                },
+                input: "hsl(var(--input))",
+                ring: "hsl(var(--ring))",
+                chart: {
+                    "1": "hsl(var(--chart-1))",
+                    "2": "hsl(var(--chart-2))",
+                    "3": "hsl(var(--chart-3))",
+                    "4": "hsl(var(--chart-4))",
+                    "5": "hsl(var(--chart-5))",
+                },
             },
             borderRadius: {
-                lg: "16px",
-                md: "12px",
-                sm: "8px",
+                lg: "var(--radius)",
+                md: "calc(var(--radius) - 2px)",
+                sm: "calc(var(--radius) - 4px)",
             },
             keyframes: {
                 "accordion-down": {
-                    from: { height: "0" },
-                    to: { height: "var(--radix-accordion-content-height)" },
+                    from: {
+                        height: "0",
+                    },
+                    to: {
+                        height: "var(--radix-accordion-content-height)",
+                    },
                 },
                 "accordion-up": {
-                    from: { height: "var(--radix-accordion-content-height)" },
-                    to: { height: "0" },
+                    from: {
+                        height: "var(--radix-accordion-content-height)",
+                    },
+                    to: {
+                        height: "0",
+                    },
                 },
             },
             animation: {

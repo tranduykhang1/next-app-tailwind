@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { appEnv } from "./env";
 
 async function login(credentials: LoginPayload): Promise<AuthResponse> {
+    console.log(appEnv);
     try {
         const res = await fetch(appEnv.NEXTAUTH_CREDENTIAL_LOGIN_URL, {
             method: "POST",
@@ -50,7 +51,6 @@ export const nextAuthOptions: NextAuthOptions = {
             },
             async authorize(credentials): Promise<any> {
                 try {
-                    console.log({ credentials });
                     return login(credentials as LoginPayload);
                 } catch (e) {
                     return {};

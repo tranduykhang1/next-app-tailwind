@@ -1,8 +1,27 @@
 {
+    "Common": {},
     "Title": {
         "page": "Page"
     },
     "Button": {
-        "login": "Login!"
+        "login": "Login",
+        "register": "Register"
+    },
+    "Form": {
+        "login": "Login",
+        "register": "Register"
+    },
+    "Text": {
+        "dontHaveAccount": "Don't have an account?"
+    },
+    "Input": {
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm password"
+    },
+    "Nav": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact"
     }
 }

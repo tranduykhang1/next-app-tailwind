@@ -1,30 +1,26 @@
-import { FormLoginReturn, LoginPayload } from "@/types/auth";
-import { UseFormRegister } from "react-hook-form";
+import { z } from "zod";
 
-export const loginValidationSchema = (
-    register: UseFormRegister<LoginPayload>
-): FormLoginReturn => ({
-    email: register("email", {
-        required: true,
-        pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email address",
-        },
-    }),
-    password: register("password", {
-        required: true,
-        minLength: 6,
-    }),
+const authErrorMessages = {
+    email: "Invalid email address",
+    password: {
+        min: "Password must be at least 6 characters long",
+    },
+};
+
+export const loginValidationSchema = z.object({
+    email: z.string().email(authErrorMessages.email),
+    password: z.string().min(6, authErrorMessages.password.min),
 });
 
-// export const registerValidationSchema = Yup.object({
-//     email: Yup.string().email("Invalid email address").required("Required"),
-//     firstName: Yup.string().required("Required"),
-//     lastName: Yup.string().required("Required"),
-//     password: Yup.string()
-//         .required("Required")
-//         .min(8, "Password must be at least 8 characters long"),
-//     confirmPassword: Yup.string()
-//         .required("Required")
-//         .min(8, "Password must be at least 8 characters long"),
-// });
+export const registerValidationSchema = z
+    .object({
+        email: z.string().email(authErrorMessages.email),
+        firstName: z.string(),
+        lastName: z.string(),
+        password: z.string().min(6, authErrorMessages.password.min),
+        confirmPassword: z.string().min(6, authErrorMessages.password.min),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords do not match",
+        path: ["confirmPassword"],
+    });

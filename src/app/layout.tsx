@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/toaster";
 import { SubLayout } from "@/layouts/SubLayout";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import type { Metadata } from "next";
@@ -31,7 +32,7 @@ export default async function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background dark:bg-background-dark transition-colors duration-1000`}
             >
                 <NextIntlClientProvider messages={messages}>
                     <ThemeProvider
@@ -40,7 +41,10 @@ export default async function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <SubLayout>{children}</SubLayout>
+                        <SubLayout>
+                            {children}
+                            <Toaster />
+                        </SubLayout>
                     </ThemeProvider>
                 </NextIntlClientProvider>
             </body>
