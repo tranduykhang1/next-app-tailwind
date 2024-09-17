@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import { ROUTE_AUTH } from "@/enums/router";
+import { ROUTE_AUTH, ROUTE_HOME } from "@/enums/router";
 import { useRouter } from "@/i18n/routing";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
@@ -24,7 +24,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         if (status === "loading") {
             return;
         } else if (status === "authenticated" && isGuestRoute) {
-            // router.push(ROUTE_HOME.DEFAULT);
+            router.push(ROUTE_HOME.DEFAULT);
         } else if (status === "unauthenticated" && !isGuestRoute) {
             router.push(ROUTE_AUTH.LOGIN);
         } else {

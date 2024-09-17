@@ -2,9 +2,10 @@
 import LoadingPage from "@/app/loading";
 import AuthGuard from "@/components/Guards/AuthGuard";
 import { ROUTE_AUTH } from "@/enums/router";
+import { usePathname } from "@/i18n/routing";
 import { SessionProvider } from "next-auth/react";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const AuthLayout = dynamic(() => import("./AuthLayout"), {
     loading: () => <LoadingPage />,
@@ -14,23 +15,29 @@ const MainLayout = dynamic(() => import("./MainLayout"), {
 });
 
 export function SubLayout({ children }: { children: React.ReactNode }) {
-    const { pathname } = (window && window.location) || "";
+    const [shouldRender, setShouldRender] = useState<boolean>(false),
+        pathname = usePathname(),
+        [isMounted, setIsMounted] = useState<boolean>(false);
 
-    const withoutNavRoute = pathname.includes(ROUTE_AUTH.DEFAULT);
-
-    console.log({ pathname });
+    useEffect(() => {
+        const isAuthRoute = pathname.includes(ROUTE_AUTH.DEFAULT);
+        setShouldRender(!isAuthRoute);
+        setIsMounted(true);
+    }, [pathname]);
 
     return (
-        <Suspense fallback={<LoadingPage />}>
-            <SessionProvider>
-                {withoutNavRoute ? (
-                    <AuthLayout>{children}</AuthLayout>
-                ) : (
-                    <AuthGuard>
+        isMounted && (
+            <Suspense fallback={<LoadingPage />}>
+                <SessionProvider>
+                    {/* <AuthGuard> */}
+                    {shouldRender ? (
                         <MainLayout>{children}</MainLayout>
-                    </AuthGuard>
-                )}
-            </SessionProvider>
-        </Suspense>
+                    ) : (
+                        <AuthLayout>{children}</AuthLayout>
+                    )}
+                    {/* </AuthGuard> */}
+                </SessionProvider>
+            </Suspense>
+        )
     );
 }

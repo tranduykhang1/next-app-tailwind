@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ClassNameMode } from "@/utils/classes";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -32,7 +33,9 @@ export default async function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background dark:bg-background-dark transition-colors duration-1000`}
+                className={ClassNameMode.background(
+                    `${geistSans.variable} ${geistMono.variable} antialiased transition-all duration-200`
+                )}
             >
                 <NextIntlClientProvider messages={messages}>
                     <ThemeProvider

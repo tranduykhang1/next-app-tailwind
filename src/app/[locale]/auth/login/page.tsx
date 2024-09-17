@@ -5,13 +5,18 @@ import { ROUTE_AUTH } from "@/enums/router";
 import { useAppTranslations } from "@/hooks/shared/useAppTranslations";
 import { useLoginViewModel } from "@/hooks/view-models/auth/useLoginViewModel";
 import { Link } from "@/i18n/routing";
+import { ClassNameMode } from "@/utils/classes";
 
 export default function LoginPage() {
     const { tForm, tInput, tButton, tText } = useAppTranslations();
 
     const { register, formErrors, handleSubmit, onLogin } = useLoginViewModel();
     return (
-        <div className="flex flex-col w-full md:w-1/2 xl:w-2/5 2xl:w-2/6 3xl:w-1/3 mx-auto p-8 md:p-10 2xl:p-12 3xl:p-14 bg-form dark:bg-form-dark rounded-2xl shadow-xl">
+        <div
+            className={ClassNameMode.form(
+                "flex flex-col w-full md:w-1/2 xl:w-2/5 2xl:w-2/6 3xl:w-1/3 mx-auto p-8 md:p-10 2xl:p-12 3xl:p-14 rounded-2xl shadow-xl"
+            )}
+        >
             <div className="flex flex-col justify-center mx-auto items-center gap-3 pb-4">
                 {/* <div>
                     <img src="/favicon.svg" width="50" alt="Logo" />

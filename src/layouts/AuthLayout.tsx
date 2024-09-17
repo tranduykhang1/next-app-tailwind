@@ -3,5 +3,5 @@ export default function AuthLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return <div className="pt-36">{children}</div>;
+    return <div style={{paddingTop: 150}}>{children}</div>;
 }
