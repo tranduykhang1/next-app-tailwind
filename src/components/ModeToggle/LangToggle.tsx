@@ -1,36 +1,43 @@
-"use client";
+'use client';
 
-import { usePathname, useRouter } from "@/i18n/routing";
-import { useLocale } from "next-intl";
-import { useTransition } from "react";
-import TextTransition, { presets } from "react-text-transition";
+import { useLocale } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import { useTransition } from 'react';
+import { Loading } from '../Icons/Loading';
 
 export default function LangToggle() {
-    const router = useRouter(),
-        [isPending, startTransition] = useTransition(),
+    const [isPending, startTransition] = useTransition(),
         pathname = usePathname(),
         locale = useLocale();
 
     const onSelectChange = (nextLocale: string) => {
         startTransition(() => {
-            router.replace(pathname, { locale: nextLocale as any });
+            startTransition(() => {
+                const newPathname = pathname.replace(
+                    `/${locale}`,
+                    `/${nextLocale}`
+                );
+                window.location.href = newPathname;
+            });
         });
     };
 
     return (
         <div className="cursor-pointer">
-            <TextTransition springConfig={presets.wobbly}>
+            {isPending ? (
+                <Loading />
+            ) : (
                 <span
                     className="font-bold"
                     onClick={() => {
                         if (!isPending) {
-                            onSelectChange(locale === "en" ? "vi" : "en");
+                            onSelectChange(locale === 'en' ? 'vi' : 'en');
                         }
                     }}
                 >
                     {locale}
                 </span>
-            </TextTransition>
+            )}
         </div>
     );
 }

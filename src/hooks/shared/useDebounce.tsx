@@ -1,6 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { Optional } from '@/types/common';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 
 export type UseDebounceProps<T> = {
     delay?: number;
@@ -9,16 +10,15 @@ export type UseDebounceProps<T> = {
 
 function useDebounce<T>({
     delay = 400,
-    initialValue,
+    initialValue
 }: UseDebounceProps<T> = {}): [
-    T | undefined,
-    (newValue: T | undefined) => void
+    Optional<T>,
+    Dispatch<SetStateAction<Optional<T>>>
 ] {
     const isMounted = useRef<boolean>(false);
-    const [value, setValue] = useState<T | undefined>(initialValue);
-    const [debounceValue, setDebounceValue] = useState<T | undefined>(
-        initialValue
-    );
+    const [value, setValue] = useState<Optional<T>>(initialValue);
+    const [debounceValue, setDebounceValue] =
+        useState<Optional<T>>(initialValue);
 
     useEffect(() => {
         if (!isMounted.current) {

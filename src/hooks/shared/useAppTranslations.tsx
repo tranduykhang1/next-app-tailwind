@@ -1,4 +1,5 @@
-import { useTranslations } from "next-intl";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useTranslations } from 'next-intl';
 
 export const useAppTranslations = (): {
     tButton: any;
@@ -7,17 +8,17 @@ export const useAppTranslations = (): {
     tForm: any;
     tNav: any;
 } => {
-    const tButton = useTranslations("Button"),
-        tText = useTranslations("Text"),
-        tInput = useTranslations("Input"),
-        tForm = useTranslations("Form"),
-        tNav = useTranslations("Nav");
+    const tButton = useTranslations('Button'),
+        tText = useTranslations('Text'),
+        tInput = useTranslations('Input'),
+        tForm = useTranslations('Form'),
+        tNav = useTranslations('Nav');
 
     return {
         tButton,
         tText,
         tInput,
         tForm,
-        tNav,
+        tNav
     };
 };

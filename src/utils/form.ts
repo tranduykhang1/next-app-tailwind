@@ -1,40 +1,40 @@
-import { FieldErrors } from "react-hook-form";
+import { FieldErrors, GlobalError } from 'react-hook-form';
 
 export const formMessageMapper = (
     errors: FieldErrors,
-    customMessage = ""
+    customMessage = ''
 ): string => {
     if (customMessage) return customMessage;
-    let message = "This field is invalid.";
+    let message = 'This field is invalid.';
     Object.keys(errors).forEach((field) => {
-        const { type } = errors[field] as any;
+        const { type } = errors[field] as GlobalError;
 
         switch (type) {
-            case "required":
+            case 'required':
                 message = `${field} is required.`;
                 break;
-            case "minLength":
+            case 'minLength':
                 message = `${field} must be at least characters.`;
                 break;
-            case "maxLength":
+            case 'maxLength':
                 message = `${field} must be at most characters.`;
                 break;
-            case "pattern":
+            case 'pattern':
                 message = `${field} must match the required pattern.`;
                 break;
-            case "validate":
+            case 'validate':
                 message = `${field} does not match the required validation.`;
                 break;
-            case "minValue":
+            case 'minValue':
                 message = `${field} must be at least.`;
                 break;
-            case "maxValue":
+            case 'maxValue':
                 message = `${field} must be at most.`;
                 break;
-            case "min":
+            case 'min':
                 message = `${field} must be at least.`;
                 break;
-            case "max":
+            case 'max':
                 message = `${field} must be at most.`;
                 break;
         }

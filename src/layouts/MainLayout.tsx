@@ -1,14 +1,14 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-const Nav = dynamic(() => import("../components/Layouts/Nav"), {
-    ssr: false,
+const Nav = dynamic(() => import('../components/Layouts/Nav'), {
+    ssr: false
 });
-const Footer = dynamic(() => import("../components/Layouts/Footer"), {
-    ssr: false,
+const Footer = dynamic(() => import('../components/Layouts/Footer'), {
+    ssr: false
 });
 
 export default function MainLayout({
-    children,
+    children
 }: {
     children: React.ReactNode;
 }) {

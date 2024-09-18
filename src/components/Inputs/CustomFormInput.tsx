@@ -1,10 +1,11 @@
-import { InputHTMLAttributes } from "react";
-import { Label } from "../ui/label";
-import { CustomInput } from "./CustomInput";
+import { InputHTMLAttributes } from 'react';
+import { Label } from '../ui/label';
+import { CustomInput } from './CustomInput';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 export type FormInputProps = InputHTMLAttributes<HTMLInputElement> & {
     error?: string;
-    register: any;
+    register: UseFormRegisterReturn;
     label: string;
 };
 

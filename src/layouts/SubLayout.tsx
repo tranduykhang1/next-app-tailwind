@@ -1,17 +1,16 @@
-"use client";
-import LoadingPage from "@/app/loading";
-import AuthGuard from "@/components/Guards/AuthGuard";
-import { ROUTE_AUTH } from "@/enums/router";
-import { usePathname } from "@/i18n/routing";
-import { SessionProvider } from "next-auth/react";
-import dynamic from "next/dynamic";
-import { Suspense, useEffect, useState } from "react";
+'use client';
+import LoadingPage from '@/app/loading';
+import { ROUTE_AUTH } from '@/enums/router';
+import { usePathname } from '@/i18n/routing';
+import { SessionProvider } from 'next-auth/react';
+import dynamic from 'next/dynamic';
+import { Suspense, useEffect, useState } from 'react';
 
-const AuthLayout = dynamic(() => import("./AuthLayout"), {
-    loading: () => <LoadingPage />,
+const AuthLayout = dynamic(() => import('./AuthLayout'), {
+    loading: () => <LoadingPage />
 });
-const MainLayout = dynamic(() => import("./MainLayout"), {
-    loading: () => <LoadingPage />,
+const MainLayout = dynamic(() => import('./MainLayout'), {
+    loading: () => <LoadingPage />
 });
 
 export function SubLayout({ children }: { children: React.ReactNode }) {

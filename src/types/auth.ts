@@ -1,5 +1,5 @@
-import { UseFormRegisterReturn } from "react-hook-form";
-import { User } from "./user";
+import { UseFormRegisterReturn } from 'react-hook-form';
+import { User } from './user';
 
 export type AuthResponse = User & {
     accessToken: string;
@@ -20,6 +20,10 @@ export type RegisterPayload = {
 };
 
 export type FormLoginReturn = {
-    email: UseFormRegisterReturn<"email">;
-    password: UseFormRegisterReturn<"password">;
+    email: UseFormRegisterReturn<'email'>;
+    password: UseFormRegisterReturn<'password'>;
+};
+
+export type NextAuthPayload = AuthResponse & {
+    user: User;
 };

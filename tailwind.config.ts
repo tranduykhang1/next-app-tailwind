@@ -1,120 +1,120 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-    darkMode: ["class"],
+    darkMode: ['class'],
     content: [
-        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+        './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+        './src/app/**/*.{js,ts,jsx,tsx,mdx}'
     ],
     theme: {
         container: {
-            padding: "2rem",
+            padding: '2rem',
             screens: {
-                "2xl": "1400px",
-            },
+                '2xl': '1400px'
+            }
         },
         extend: {
             colors: {
                 foreground: {
-                    DEFAULT: "#4d76aa",
-                    dark: "#ffffff",
+                    DEFAULT: '#4d76aa',
+                    dark: '#ffffff'
                 },
                 background: {
-                    DEFAULT: "#f4f6fb",
-                    dark: "#1b2436",
+                    DEFAULT: '#f4f6fb',
+                    dark: '#1b2436'
                 },
                 button: {
-                    dark: "#f4f6fb",
-                    DEFAULT: "#1b2436",
+                    dark: '#f4f6fb',
+                    DEFAULT: '#1b2436'
                 },
                 text: {
-                    DEFAULT: "#1b2436",
-                    dark: "#f4f6fb",
+                    DEFAULT: '#1b2436',
+                    dark: '#f4f6fb'
                 },
                 buttonText: {
-                    DEFAULT: "#f4f6fb",
-                    dark: "#1b2436",
+                    DEFAULT: '#f4f6fb',
+                    dark: '#1b2436'
                 },
                 form: {
-                    dark: "#f4f6fb",
-                    DEFAULT: "#1b2436",
+                    dark: '#f4f6fb',
+                    DEFAULT: '#1b2436'
                 },
                 error: {
-                    DEFAULT: "#304b74",
-                    dark: "#ff0000",
+                    DEFAULT: '#304b74',
+                    dark: '#ff0000'
                 },
                 warning: {
-                    DEFAULT: "#2b4061",
-                    dark: "#ffcc00",
+                    DEFAULT: '#2b4061',
+                    dark: '#ffcc00'
                 },
                 secondary: {
-                    DEFAULT: "#283852",
-                    dark: "#282c34",
+                    DEFAULT: '#283852',
+                    dark: '#282c34'
                 },
                 primary: {
-                    DEFAULT: "#1b2436",
-                    dark: "#f4f6fb",
+                    DEFAULT: '#1b2436',
+                    dark: '#f4f6fb'
                 },
                 muted: {
-                    DEFAULT: "hsl(var(--muted))",
-                    foreground: "hsl(var(--muted-foreground))",
+                    DEFAULT: 'hsl(var(--muted))',
+                    foreground: 'hsl(var(--muted-foreground))'
                 },
                 accent: {
-                    DEFAULT: "hsl(var(--accent))",
-                    foreground: "hsl(var(--accent-foreground))",
+                    DEFAULT: 'hsl(var(--accent))',
+                    foreground: 'hsl(var(--accent-foreground))'
                 },
                 destructive: {
-                    DEFAULT: "hsl(var(--destructive))",
-                    foreground: "hsl(var(--destructive-foreground))",
+                    DEFAULT: 'hsl(var(--destructive))',
+                    foreground: 'hsl(var(--destructive-foreground))'
                 },
                 border: {
-                    DEFAULT: "#1e293b",
-                    dark: "#334155",
+                    DEFAULT: '#1e293b',
+                    dark: '#334155'
                 },
                 hover: {
-                    DEFAULT: "#cbd5e1",
-                    dark: "#334155",
+                    DEFAULT: '#cbd5e1',
+                    dark: '#334155'
                 },
-                input: "hsl(var(--input))",
-                ring: "hsl(var(--ring))",
+                input: 'hsl(var(--input))',
+                ring: 'hsl(var(--ring))',
                 chart: {
-                    "1": "hsl(var(--chart-1))",
-                    "2": "hsl(var(--chart-2))",
-                    "3": "hsl(var(--chart-3))",
-                    "4": "hsl(var(--chart-4))",
-                    "5": "hsl(var(--chart-5))",
-                },
+                    1: 'hsl(var(--chart-1))',
+                    2: 'hsl(var(--chart-2))',
+                    3: 'hsl(var(--chart-3))',
+                    4: 'hsl(var(--chart-4))',
+                    5: 'hsl(var(--chart-5))'
+                }
             },
             borderRadius: {
-                lg: "var(--radius)",
-                md: "calc(var(--radius) - 2px)",
-                sm: "calc(var(--radius) - 4px)",
+                lg: 'var(--radius)',
+                md: 'calc(var(--radius) - 2px)',
+                sm: 'calc(var(--radius) - 4px)'
             },
             keyframes: {
-                "accordion-down": {
+                'accordion-down': {
                     from: {
-                        height: "0",
+                        height: '0'
                     },
                     to: {
-                        height: "var(--radix-accordion-content-height)",
-                    },
+                        height: 'var(--radix-accordion-content-height)'
+                    }
                 },
-                "accordion-up": {
+                'accordion-up': {
                     from: {
-                        height: "var(--radix-accordion-content-height)",
+                        height: 'var(--radix-accordion-content-height)'
                     },
                     to: {
-                        height: "0",
-                    },
-                },
+                        height: '0'
+                    }
+                }
             },
             animation: {
-                "accordion-down": "accordion-down 0.2s ease-out",
-                "accordion-up": "accordion-up 0.2s ease-out",
-            },
-        },
+                'accordion-down': 'accordion-down 0.2s ease-out',
+                'accordion-up': 'accordion-up 0.2s ease-out'
+            }
+        }
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [require('tailwindcss-animate')]
 };
 export default config;

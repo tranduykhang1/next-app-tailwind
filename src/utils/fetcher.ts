@@ -1,6 +1,8 @@
-import appConfig from "@/config/env";
-import { FetchOptions, SuccessResponse } from "@/types/common";
-import { buildQueryString } from "./query";
+import { appEnv } from '@/config/env';
+import { NextAuthPayload } from '@/types/auth';
+import { FetchOptions, SuccessResponse } from '@/types/common';
+import { getSession } from 'next-auth/react';
+import { buildQueryString } from './query';
 
 // export async function shouldRefreshToken(
 //     token: JWT & User & WithToken
@@ -36,13 +38,13 @@ import { buildQueryString } from "./query";
 export async function fetcher<Data, Params, Body>(
     options: FetchOptions<Params, Body>
 ): Promise<SuccessResponse<Data>> {
-    let url = appConfig.API_HOST + options.path;
-    let body: any;
-    //     let session = await getSession();
+    let url = appEnv.API_HOST + options.path;
+    let body: (Body & FormData) | string;
+    const session = (await getSession()) as unknown as NextAuthPayload;
     const headers: Record<string, string> = {};
 
-    if (session?.user?.accessToken) {
-        headers["Authorization"] = `Bearer ${session.user.accessToken}`;
+    if (session?.accessToken) {
+        headers['Authorization'] = `Bearer ${session.accessToken}`;
     }
 
     if (options.params) {
@@ -56,20 +58,20 @@ export async function fetcher<Data, Params, Body>(
             body = options.body;
         } else {
             body = JSON.stringify(options.body);
-            headers["Content-Type"] = "application/json";
-            headers["accept"] = "application/json";
+            headers['Content-Type'] = 'application/json';
+            headers['accept'] = 'application/json';
         }
     }
 
     const fetchRequest = async (): Promise<SuccessResponse<Data>> => {
         return fetch(url, {
-            method: options?.method || "GET",
-            mode: "cors",
+            method: options?.method || 'GET',
+            mode: 'cors',
             headers: {
                 ...headers,
-                ...options?.headers,
+                ...options?.headers
             },
-            body,
+            body
         }).then(async (res) => {
             //     if (!res.ok) {
             //         if (res.status === 401 || res.status === 403) {

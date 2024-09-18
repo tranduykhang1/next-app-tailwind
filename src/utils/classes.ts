@@ -1,21 +1,21 @@
 export class ClassNameMode {
     static button = (...inputs: string[]) => {
-        return `text-button dark:text-button-dark ${inputs.join(" ")}`;
+        return `text-button dark:text-button-dark ${inputs.join(' ')}`;
     };
 
     static buttonText = (...inputs: string[]) => {
-        return `text-buttonText dark:text-buttonText-dark ${inputs.join(" ")}`;
+        return `text-buttonText dark:text-buttonText-dark ${inputs.join(' ')}`;
     };
 
     static text = (...inputs: string[]) => {
-        return `text-text dark:text-text-dark ${inputs.join(" ")}`;
+        return `text-text dark:text-text-dark ${inputs.join(' ')}`;
     };
 
     static form = (...inputs: string[]) => {
-        return `bg-form dark:bg-form-dark ${inputs.join(" ")}`;
+        return `bg-form dark:bg-form-dark ${inputs.join(' ')}`;
     };
 
     static background = (...inputs: string[]) => {
-        return `bg-background dark:bg-background-dark ${inputs.join(" ")}`;
+        return `bg-background dark:bg-background-dark ${inputs.join(' ')}`;
     };
 }

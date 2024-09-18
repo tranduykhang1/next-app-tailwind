@@ -6,9 +6,9 @@ export interface AppEnv {
 }
 
 export const appEnv: AppEnv = {
-    API_HOST: process.env.NEXT_PUBLIC_API_HOST || "",
-    FILE_HOST: process.env.NEXT_PUBLIC_FILE_HOST || "",
+    API_HOST: process.env.NEXT_PUBLIC_API_HOST || '',
+    FILE_HOST: process.env.NEXT_PUBLIC_FILE_HOST || '',
     NEXTAUTH_CREDENTIAL_LOGIN_URL:
-        process.env.NEXTAUTH_CREDENTIAL_LOGIN_URL || "",
-    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET || "",
+        process.env.NEXTAUTH_CREDENTIAL_LOGIN_URL || '',
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET || ''
 };

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export default function ErrorPage({ error }: { error: Error }) {
     return (
@@ -6,9 +6,9 @@ export default function ErrorPage({ error }: { error: Error }) {
             <h1 className="text-6xl font-bold">{error.name}</h1>
             <p className="text-2xl">{error.message}</p>
             <p className="text-lg">
-                {error.stack?.split("\n").map((line, index) => (
-                    <span key={index}>{line}</span>
-                ))}
+                {error.stack
+                    ?.split('\n')
+                    .map((line, index) => <span key={index}>{line}</span>)}
             </p>
         </div>
     );

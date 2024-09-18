@@ -1,7 +1,7 @@
 // create the custom button component
-import { type ButtonHTMLAttributes } from "react";
-import { Loading } from "../Icons/Loading";
-import { Button } from "../ui/button";
+import { type ButtonHTMLAttributes } from 'react';
+import { Loading } from '../Icons/Loading';
+import { Button } from '../ui/button';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     loading?: boolean;
