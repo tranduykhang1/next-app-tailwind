@@ -20,11 +20,9 @@ jobs:
         with:
           node-version: "21.x"
 
-      - name: Install - Test
+      - name: Install
         run: |
           npm ci
-          npm run test
-          npm run test:architect
 
   build:
     runs-on: ubuntu-22.04

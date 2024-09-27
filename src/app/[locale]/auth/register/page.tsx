@@ -4,19 +4,19 @@ import CustomButton from '@/components/Buttons/CusdtomButton';
 import { CustomFormInput } from '@/components/Inputs/CustomFormInput';
 import { ROUTE_AUTH } from '@/enums/router';
 import { useAppTranslations } from '@/hooks/shared/useAppTranslations';
-import { useLoginViewModel } from '@/hooks/view-models/auth/useLoginViewModel';
+import { useRegisterViewModel } from '@/hooks/view-models/auth/useRegisterViewModel';
 import { Link } from '@/i18n/routing';
-import { ClassNameMode } from '@/utils/classes';
 
 export default function RegisterPage() {
     const { tForm, tInput, tButton, tText } = useAppTranslations();
 
-    const { register, formErrors, handleSubmit, onLogin } = useLoginViewModel();
+    const { register, formErrors, handleSubmit, onRegister } =
+        useRegisterViewModel();
     return (
         <div
-            className={ClassNameMode.form(
-                'flex flex-col w-full md:w-1/2 xl:w-2/5 2xl:w-2/6 3xl:w-1/3 mx-auto p-8 md:p-10 2xl:p-12 3xl:p-14 rounded-2xl shadow-xl'
-            )}
+            className={
+                'flex flex-col w-full md:w-1/2 xl:w-2/5 2xl:w-2/6 3xl:w-1/3 mx-auto p-8 md:p-10 2xl:p-12 3xl:p-14 rounded-2xl shadow-xl bg-form dark:bg-form-dark'
+            }
         >
             <div className="flex flex-col justify-center mx-auto items-center gap-3 pb-4">
                 {/* <div>
@@ -27,7 +27,7 @@ export default function RegisterPage() {
                 </h1>
             </div>
             <div className="text-sm font-light text-[#6B7280] pb-8 mx-auto"></div>
-            <form className="flex flex-col" onSubmit={handleSubmit(onLogin)}>
+            <form className="flex flex-col" onSubmit={handleSubmit(onRegister)}>
                 <CustomFormInput
                     register={register('email')}
                     type="email"
@@ -51,7 +51,7 @@ export default function RegisterPage() {
                 />
 
                 <CustomFormInput
-                    register={register('password')}
+                    register={register('confirmPassword')}
                     type="password"
                     name="password"
                     id="password"

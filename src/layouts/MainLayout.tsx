@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-const Nav = dynamic(() => import('../components/Layouts/Nav'), {
+const Header = dynamic(() => import('../components/Layouts/Header'), {
     ssr: false
 });
 const Footer = dynamic(() => import('../components/Layouts/Footer'), {
@@ -14,7 +14,7 @@ export default function MainLayout({
 }) {
     return (
         <div className="flex flex-col justify-between h-full">
-            <Nav />
+            <Header />
             {children}
             <Footer />
         </div>

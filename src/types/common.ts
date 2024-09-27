@@ -26,9 +26,9 @@ export interface SuccessResponse<T> {
 }
 
 export interface ErrorResponse {
-    code: string;
+    code?: string;
     message: string;
-    details?: Record<string, string>;
+    trace?: Record<string, string>;
 }
 
 export type FetchMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';

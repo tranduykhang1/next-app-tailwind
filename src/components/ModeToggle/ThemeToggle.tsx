@@ -10,11 +10,12 @@ export default function ThemeToggle() {
     };
 
     return (
-        <DarkModeSwitch
-            style={{ marginBottom: '1.3rem' }}
-            checked={theme === 'dark'}
-            onChange={toggleDarkMode}
-            size={20}
-        />
+        <div className="">
+            <DarkModeSwitch
+                checked={theme === 'dark'}
+                onChange={toggleDarkMode}
+                size={20}
+            />
+        </div>
     );
 }

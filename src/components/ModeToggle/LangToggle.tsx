@@ -27,8 +27,8 @@ export default function LangToggle() {
             {isPending ? (
                 <Loading />
             ) : (
-                <span
-                    className="font-bold"
+                <p
+                    className="!text-text dark:!text-text-dark"
                     onClick={() => {
                         if (!isPending) {
                             onSelectChange(locale === 'en' ? 'vi' : 'en');
@@ -36,7 +36,7 @@ export default function LangToggle() {
                     }}
                 >
                     {locale}
-                </span>
+                </p>
             )}
         </div>
     );

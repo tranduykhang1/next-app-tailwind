@@ -7,10 +7,12 @@ import dynamic from 'next/dynamic';
 import { Suspense, useEffect, useState } from 'react';
 
 const AuthLayout = dynamic(() => import('./AuthLayout'), {
-    loading: () => <LoadingPage />
+    loading: () => <LoadingPage />,
+    ssr: true
 });
 const MainLayout = dynamic(() => import('./MainLayout'), {
-    loading: () => <LoadingPage />
+    loading: () => <LoadingPage />,
+    ssr: true
 });
 
 export function SubLayout({ children }: { children: React.ReactNode }) {

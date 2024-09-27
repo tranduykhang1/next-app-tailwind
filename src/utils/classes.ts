@@ -12,7 +12,7 @@ export class ClassNameMode {
     };
 
     static form = (...inputs: string[]) => {
-        return `bg-form dark:bg-form-dark ${inputs.join(' ')}`;
+        return `!bg-form !dark:bg-form-dark ${inputs.join(' ')}`;
     };
 
     static background = (...inputs: string[]) => {
