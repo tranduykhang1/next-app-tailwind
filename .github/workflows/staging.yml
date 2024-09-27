@@ -23,16 +23,4 @@ jobs:
       - name: Install
         run: |
           npm ci
-
-  build:
-    runs-on: ubuntu-22.04
-    needs: [test]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Build the app
-        run: |
           npm run build
