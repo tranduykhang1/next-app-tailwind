@@ -13,21 +13,22 @@
         "jsx": "preserve",
         "incremental": true,
         "rootDir": "src",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
         "plugins": [
             {
                 "name": "next"
             }
-        ],
-        "paths": {
-            "@/*": ["./src/*"]
-        }
+        ]
     },
     "include": [
         "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
+        "src/**/*.ts",
+        "src/**/*.tsx",
         ".next/types/**/*.ts",
-        "next.configjss"
+        "next.config.js"
     ],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", ".next"]
 }
